@@ -14,7 +14,7 @@ def edit_profile():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         current_user.password = hashed_password
         db.session.commit()
-        flash('Your profile has been updated!', 'success')
+        flash('Ваш профиль был обновлен!', 'success')
         return redirect(url_for('edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
