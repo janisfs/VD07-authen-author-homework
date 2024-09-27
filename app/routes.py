@@ -4,6 +4,12 @@ from app import app, db, bcrypt
 from app.forms import EditProfileForm
 from app.models import User
 
+@app.route('/')
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+
 @app.route("/profile/edit", methods=['GET', 'POST'])
 @login_required
 def edit_profile():
