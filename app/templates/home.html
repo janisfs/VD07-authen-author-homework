@@ -1,5 +1,12 @@
+<!-- home.html -->
 {% extends "base.html" %}
-
+{% block title %}Главная{% endblock %}
 {% block content %}
-    <h1>Welcome to the Profile Management System!</h1>
+    <h1>Добро пожаловать в систему управления пользователями</h1>
+    {% if current_user.is_authenticated %}
+        <p>Вы вошли как {{ current_user.username }}. <a href="{{ url_for('profile') }}">Перейти в профиль</a></p>
+    {% else %}
+        <p>Пожалуйста, <a href="{{ url_for('login') }}">войдите</a> или
+            <a href="{{ url_for('register') }}">зарегистрируйтесь</a>.</p>
+    {% endif %}
 {% endblock %}
